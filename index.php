@@ -4,11 +4,11 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
  
-    header("Location: create.php");
+    header("Location: pages/create.php");
     exit();
 } else {
    
-    header("Location: register.php");
+    header("Location: pages/register.php");
     exit();
 }
 ?>
