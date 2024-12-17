@@ -1,6 +1,12 @@
 <?php
-include '../databases/connection.php'; 
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+include '../databases/connection.php'; 
+?>
+<?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
     $title = $_POST['title'] ?? '';
@@ -25,12 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<?php
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

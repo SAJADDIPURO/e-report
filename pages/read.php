@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
 include '../databases/connection.php';
 
 $query = "SELECT complaints.*, users.username FROM complaints INNER JOIN users ON complaints.user_id = users.id";
@@ -35,5 +40,6 @@ $result = $conn->query($query);
     <?php endwhile; ?>
 </table>
 <a href="create.php" class="back-btn">buat pengaduan</a>
+<a href="./index.php" class="back-btn">kembali..?</a>
 </body>
 </html>

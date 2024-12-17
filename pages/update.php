@@ -1,6 +1,13 @@
 <?php
 include '../databases/connection.php';
-
+?>
+<?php
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+<?php
 $id = $_GET['id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
